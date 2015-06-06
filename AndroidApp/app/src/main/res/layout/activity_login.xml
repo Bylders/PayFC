@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.palashbansal96.payfc.LoginActivity"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp" android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="24dp"
+        android:layout_weight="1">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Aadhar No."
+        android:inputType="numberSigned"
+        android:text=""
+        android:backgroundTintMode="src_atop"
+        android:id="@+id/aadharNo"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get OTP"
+        android:layout_below="@id/aadharNo"
+        android:layout_centerHorizontal="true"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:id="@+id/getOTP"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="OTP"
+        android:inputType="numberSigned"
+        android:text=""
+        android:backgroundTintMode="src_atop"
+        android:visibility="gone"
+        android:id="@+id/OTP"
+        android:layout_below="@id/aadharNo"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:visibility="gone"
+        android:layout_below="@id/OTP"
+        android:layout_centerHorizontal="true"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:id="@+id/cont"
+        />
+    </RelativeLayout>
+</LinearLayout>
