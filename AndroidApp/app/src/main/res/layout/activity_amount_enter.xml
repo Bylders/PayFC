@@ -1,23 +1,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context="com.palashbansal96.payfc.AmountEnterActivity"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     >
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="NFC is disabled\nEnable in Settings"
-        android:id="@+id/errorView"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="gone"
-        android:textColor="@android:color/white"
-        android:textSize="24dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter the Amount to Pay"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:id="@+id/tView"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount"
+            android:inputType="numberSigned"
+            android:text=""
+            android:layout_below="@id/tView"
+            android:id="@+id/amount"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:layout_below="@id/amount"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/contAmt"
+            />
+    </RelativeLayout>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -25,38 +45,4 @@
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher"
         />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Or enter Vendor's Aadhar no."
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:id="@+id/tView"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Aadhar No."
-            android:inputType="numberSigned"
-            android:text=""
-            android:layout_below="@id/tView"
-            android:id="@+id/aadharNoMain"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue"
-            android:layout_below="@id/aadharNoMain"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/contMain"
-            />
-
-    </RelativeLayout>
 </LinearLayout>

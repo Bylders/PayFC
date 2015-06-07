@@ -18,46 +18,40 @@
         android:layout_height="0dp"
         android:padding="24dp"
         android:layout_weight="1">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Aadhar No."
-        android:inputType="numberSigned"
-        android:text=""
-        android:backgroundTintMode="src_atop"
-        android:id="@+id/aadharNo"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get OTP"
-        android:layout_below="@id/aadharNo"
-        android:layout_centerHorizontal="true"
-        android:backgroundTintMode="src_atop"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:id="@+id/getOTP"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="OTP"
-        android:inputType="numberSigned"
-        android:text=""
-        android:backgroundTintMode="src_atop"
-        android:visibility="gone"
-        android:id="@+id/OTP"
-        android:layout_below="@id/aadharNo"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Continue"
-        android:visibility="gone"
-        android:layout_below="@id/OTP"
-        android:layout_centerHorizontal="true"
-        android:backgroundTintMode="src_atop"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:id="@+id/cont"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Aadhar No."
+            android:inputType="numberSigned"
+            android:text=""
+            android:id="@+id/aadharNo"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get OTP"
+            android:layout_below="@id/aadharNo"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/getOTP"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="OTP"
+            android:inputType="numberSigned"
+            android:text=""
+            android:visibility="gone"
+            android:id="@+id/OTP"
+            android:layout_below="@id/aadharNo"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:visibility="gone"
+            android:layout_below="@id/OTP"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/cont"
+            />
     </RelativeLayout>
 </LinearLayout>

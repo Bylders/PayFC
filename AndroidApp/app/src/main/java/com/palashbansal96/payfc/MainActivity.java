@@ -5,6 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -12,10 +15,13 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +29,13 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView mErrorView;
     private NfcAdapter mNFCAdapter;
     public static final String MIME_TEXT_PLAIN = "text/plain";
-
+    SharedPreferences sharedPreferences;
+    Button contMain;
 
 
 
@@ -36,6 +43,26 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
+
+        if(sharedPreferences.getBoolean("first_time", true)){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
+        contMain = (Button) findViewById(R.id.contMain);
+        contMain.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                String aadhar = ((EditText) findViewById(R.id.aadharNoMain)).getText().toString();
+                sendAadhar(aadhar);
+            }
+        });
+        contMain.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+
 
         mErrorView = (TextView) findViewById(R.id.errorView);
         mNFCAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -56,6 +83,12 @@ public class MainActivity extends Activity {
 
     }
 
+    private void sendAadhar(String aadhar){
+        Intent intent = new Intent(this, AmountEnterActivity.class);
+        intent.putExtra("VENDOR", aadhar);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,12 +102,6 @@ public class MainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -230,7 +257,7 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
-                mErrorView.setText("Read content: " + result);
+                sendAadhar(result);
             }
         }
     }

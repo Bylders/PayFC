@@ -31,7 +31,14 @@
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-
+        <activity
+            android:name=".AmountEnterActivity"
+            android:label="@string/title_activity_amount_enter" >
+        </activity>
+        <activity
+            android:name=".PasswordActivity"
+            android:label="@string/title_activity_password" >
+        </activity>
     </application>
 
 </manifest>
