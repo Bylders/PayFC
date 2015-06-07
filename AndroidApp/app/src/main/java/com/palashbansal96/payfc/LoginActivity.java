@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button getOTP, cont;
+    Button go, cont;
     EditText aadharNo, OTP;
     SharedPreferences sharedpreferences;
 
@@ -30,12 +30,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getOTP = (Button) findViewById(R.id.getOTP);
+        go = (Button) findViewById(R.id.go);
         cont = (Button) findViewById(R.id.cont);
         aadharNo = (EditText) findViewById(R.id.aadharNo);
         OTP = (EditText) findViewById(R.id.OTP);
         cont.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
-        getOTP.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+        go.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
 
 
         sharedpreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        getOTP.setOnClickListener(new View.OnClickListener() {
+        go.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -58,28 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 reply=true;
 
                 if(reply==true){
-                    getOTP.setVisibility(View.GONE);
-                    OTP.setVisibility(View.VISIBLE);
-                    cont.setVisibility(View.VISIBLE);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Aadhar No. not valid/registered", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        cont.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View arg0) {
-
-                boolean reply=false;
-                String aadhar = aadharNo.getText().toString();
-                String otp = OTP.getText().toString();
-
-                // TODO: Send OTP and Aadhar and chk
-                reply=true;
-
-                if(reply==true){
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString("AADHAR", aadhar);
                     editor.putBoolean("first_time", false);
@@ -87,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Incorrect OTP", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Aadhar No. not valid/registered", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -38,10 +38,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get OTP"
+            android:text="Continue"
             android:layout_below="@id/aadharNo"
             android:layout_centerHorizontal="true"
-            android:id="@+id/getOTP"
+            android:id="@+id/go"
             />
         <EditText
             android:layout_width="match_parent"

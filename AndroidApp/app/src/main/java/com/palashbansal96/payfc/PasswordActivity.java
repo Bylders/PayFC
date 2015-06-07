@@ -17,6 +17,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 
 public class PasswordActivity extends AppCompatActivity {
 
@@ -63,14 +77,25 @@ public class PasswordActivity extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 String pin = ( (EditText)findViewById(R.id.PIN) ).getText().toString();
-                boolean reply = false;
 
-                //TODO: Send aadhar no to server
-
-                reply = true;
-
-                if (reply == true) {
+                HttpResponse response = null;
+                try {
+                    HttpClient client = new DefaultHttpClient();
+                    HttpGet request = new HttpGet();
+                    request.setURI(new URI("http:192.168.55.63:3000/adharid="+aadhar+"&pin="+pin+"&vender="+vendor+"&amount="+amount));
+                    response = client.execute(request);
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                } catch (ClientProtocolException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                if (!(response==null || response.toString()=="-1")) {
                     Intent intent = new Intent(getBaseContext(), PaymentSuccess.class);
+                    intent.putExtra("BALANCE", response.toString());
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "An error occurred", Toast.LENGTH_LONG).show();
