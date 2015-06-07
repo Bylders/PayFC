@@ -37,7 +37,7 @@ public class PaymentSuccess extends AppCompatActivity {
         else{
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
+           }
 
         ((EditText)findViewById(R.id.balance)).setText("Rs. " + amount);
 

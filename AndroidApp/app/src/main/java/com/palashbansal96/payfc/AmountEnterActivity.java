@@ -57,7 +57,7 @@ public class AmountEnterActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 String cost = ((EditText) findViewById(R.id.amount)).getText().toString();
-                Intent intent = new Intent(getBaseContext(), PasswordActivity.class);
+                Intent intent = new Intent(getBaseContext(), PaymentSuccess.class);
                 intent.putExtra("VENDOR", aadhar);
                 intent.putExtra("AMOUNT", cost);
                 startActivity(intent);
