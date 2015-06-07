@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.palashbansal96.payfc.PaymentSuccess"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+        >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:padding="32dp"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_check_all_black_48dp"
+            android:background="@drawable/circle_background"
+            android:id="@+id/main_image"
+            />
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Current Balance"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:id="@+id/tView"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="Rs. 50"
+            android:layout_below="@id/tView"
+            android:id="@+id/balance"
+            android:textColor="#00ff00"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_below="@id/balance"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/payMoney"
+            />
+
+    </RelativeLayout>
+</LinearLayout>
