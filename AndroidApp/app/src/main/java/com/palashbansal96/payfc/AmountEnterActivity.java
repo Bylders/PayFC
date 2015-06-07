@@ -3,6 +3,7 @@ package com.palashbansal96.payfc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,7 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 public class AmountEnterActivity extends AppCompatActivity {
@@ -29,6 +33,7 @@ public class AmountEnterActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             aadhar = extras.getString("VENDOR");
+            ( (TextView) findViewById(R.id.venderAad)).setText("Vendor's Aadhar: " + aadhar);
         }
         else{
             Intent intent = new Intent(this, MainActivity.class);
@@ -51,13 +56,17 @@ public class AmountEnterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View arg0) {
-                String cost = ( (EditText) findViewById(R.id.amount) ).getText().toString();
+                String cost = ((EditText) findViewById(R.id.amount)).getText().toString();
                 Intent intent = new Intent(getBaseContext(), PasswordActivity.class);
                 intent.putExtra("VENDOR", aadhar);
                 intent.putExtra("AMOUNT", cost);
                 startActivity(intent);
             }
         });
+        ImageView imageView = (ImageView) findViewById(R.id.amount_image);
+        imageView.setColorFilter(Color.argb(255, 0, 255, 0));
+
+
     }
 
     @Override

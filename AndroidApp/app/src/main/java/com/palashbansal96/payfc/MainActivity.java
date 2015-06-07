@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -22,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        ImageView imageView = (ImageView) findViewById(R.id.main_image);
+        imageView.setColorFilter(Color.argb(255, 0, 255, 0));
+
         if(!mNFCAdapter.isEnabled()) {
             mErrorView.setVisibility(View.VISIBLE);
         } else {
@@ -88,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("VENDOR", aadhar);
         startActivity(intent);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

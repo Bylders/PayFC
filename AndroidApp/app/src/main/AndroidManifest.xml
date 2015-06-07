@@ -39,6 +39,10 @@
             android:name=".PasswordActivity"
             android:label="@string/title_activity_password" >
         </activity>
+        <activity
+            android:name=".PaymentSuccess"
+            android:label="@string/title_activity_payment_success" >
+        </activity>
     </application>
 
 </manifest>

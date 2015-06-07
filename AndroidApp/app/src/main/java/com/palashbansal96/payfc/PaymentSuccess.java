@@ -14,36 +14,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class PasswordActivity extends AppCompatActivity {
+public class PaymentSuccess extends AppCompatActivity {
 
-    String vendor, aadhar, amount;
+    String amount;
     SharedPreferences sharedPreferences;
-
-    Button pay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password);
-
+        setContentView(R.layout.activity_payment_success);
 
         ImageView imageView = (ImageView) findViewById(R.id.main_image);
         imageView.setColorFilter(Color.argb(255, 0, 255, 0));
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            vendor = extras.getString("VENDOR");
-            amount = extras.getString("AMOUNT");
-            ( (TextView) findViewById(R.id.amtTxt)).setText("Amount to Pay: " + amount);
+            amount = extras.getString("BALANCE");
         }
         else{
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+
+        ((EditText)findViewById(R.id.balance)).setText("Rs. " + amount);
 
         sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE);
 
@@ -52,39 +48,24 @@ public class PasswordActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        aadhar = sharedPreferences.getString("AADHAR", "0");
+        Button balance = (Button) findViewById(R.id.payMoney);
+        balance.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
 
-        pay = (Button) findViewById(R.id.payMoney);
-        pay.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
-
-        pay.setOnClickListener(new View.OnClickListener() {
+        balance.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
-                String pin = ( (EditText)findViewById(R.id.PIN) ).getText().toString();
-                boolean reply = false;
-
-                //TODO: Send aadhar no to server
-
-                reply = true;
-
-                if (reply == true) {
-                    Intent intent = new Intent(getBaseContext(), PaymentSuccess.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "An error occurred", Toast.LENGTH_LONG).show();
-                }
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
-
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_password, menu);
+        getMenuInflater().inflate(R.menu.menu_payment_success, menu);
         return true;
     }
 
@@ -93,6 +74,12 @@ public class PasswordActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

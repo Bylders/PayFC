@@ -5,4 +5,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_amount_enter">AmountEnterActivity</string>
     <string name="title_activity_password">PasswordActivity</string>
+    <string name="title_activity_payment_success">PaymentSuccess</string>
 </resources>
