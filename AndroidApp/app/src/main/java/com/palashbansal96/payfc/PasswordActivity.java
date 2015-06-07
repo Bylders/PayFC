@@ -82,7 +82,7 @@ public class PasswordActivity extends AppCompatActivity {
                 try {
                     HttpClient client = new DefaultHttpClient();
                     HttpGet request = new HttpGet();
-                    request.setURI(new URI("http:192.168.55.63:3000/adharid="+aadhar+"&pin="+pin+"&vender="+vendor+"&amount="+amount));
+                    request.setURI(new URI("http:192.168.55.63:3000/from="+aadhar+"&frompass="+pin+"&to="+vendor+"&amt="+amount));
                     response = client.execute(request);
                 } catch (URISyntaxException e) {
                     e.printStackTrace();
