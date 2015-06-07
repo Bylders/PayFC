@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Auth1s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aadharid</th>
+      <th>Pincode</th>
+      <th>Misc</th>
+      <th>Misc2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auth1s.each do |auth1| %>
+      <tr>
+        <td><%= auth1.aadharid %></td>
+        <td><%= auth1.pincode %></td>
+        <td><%= auth1.misc %></td>
+        <td><%= auth1.misc2 %></td>
+        <td><%= link_to 'Show', auth1 %></td>
+        <td><%= link_to 'Edit', edit_auth1_path(auth1) %></td>
+        <td><%= link_to 'Destroy', auth1, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auth1', new_auth1_path %>
