@@ -33,11 +33,12 @@ public class PaymentSuccess extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             amount = extras.getString("BALANCE");
+            ((EditText)findViewById(R.id.balance)).setText("Rs. " + amount);
         }
-        else{
+        else {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-           }
+        }
 
         ((EditText)findViewById(R.id.balance)).setText("Rs. " + amount);
 
